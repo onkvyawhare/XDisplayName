@@ -7,7 +7,8 @@ function Fullname() {
   const[lastName,setLastName]=useState("");
   const [fullName, setFullName] = useState('');
 
-  const handleSubmit=()=>{
+  const handleSubmit=(event)=>{
+    event.preventDefault();
     if(!firstName || !lastName){
       alert('Please fill out all fields.');
       return;
