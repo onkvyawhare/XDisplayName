@@ -1,59 +1,48 @@
-import {useState} from "react";
+import React, { useState } from 'react';
 
-
-function Fullname() {
-
-  const[firstName,setFirstName]=useState("");
-  const[lastName,setLastName]=useState("");
+const FullNameForm = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [fullName, setFullName] = useState('');
 
-  const handleSubmit=(event)=>{
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if(!firstName || !lastName){
+    if (!firstName || !lastName) {
       alert('Please fill out all fields.');
       return;
     }
-    else{
-      setFullName(`Full name:${firstName} ${lastName}`);
-    }
-
-  }
-
+    setFullName(`Full Name: ${firstName} ${lastName}!`);
+  };
 
   return (
-    <div >
-      <h1>Full Name display</h1>
+    <div>
+    <h1>Full Name Display</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="firstname">First name:</label>
-        <input
-          type="text"
-          id="firstname"
-          value={firstName}
-          onChange={(event) => setFirstName(event.target.value)}
-          required
-
-          />
-
-          <br></br>
-
-       <label htmlFor="lastname">Last name:</label>
-        <input
-          type="text"
-          id="lasstname"
-          value={lastName}
-          onChange={(event) => setLastName(event.target.value)}
-          required
-            />
-       <br></br>
-
-       <button type="submit">Submit</button>
-        
-      </form>
-      {fullName && (
+      <label htmlFor="firstName">First Name:</label>
+      <input
+        type="text"
+        id="firstName"
+        value={firstName}
+        onChange={(event) => setFirstName(event.target.value)}
+        required
+      />
+      <br />
+      <label htmlFor="lastName">Last Name:</label>
+      <input
+        type="text"
+        id="lastName"
+        value={lastName}
+        onChange={(event) => setLastName(event.target.value)}
+        required
+      />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+    {fullName && (
       <div>{fullName}</div>
     )}
     </div>
   );
-}
+};
 
-export default Fullname;
+export default FullNameForm;
